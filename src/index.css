@@ -8,89 +8,104 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Couleur de fond principale */
+    --background: 42 38% 95%;  /* #F5F1E8 */
+    --foreground: 220 69% 6%;  /* #0B1020 - Texte sur fond clair */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Cartes et blocs */
+    --card: 0 0% 100%;  /* #FFFFFF - Fond des blocs */
+    --card-foreground: 220 69% 6%;  /* #0B1020 */
+    --card-border: 47 100% 88%;  /* #FFF3C2 - Contour doré */
 
+    /* Popovers */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 69% 6%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Couleur principale - Doré pour les titres */
+    --primary: 43 57% 61%;  /* #D8B560 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Couleur secondaire - Bordeaux pour les éléments importants */
+    --secondary: 346 70% 29%;  /* #7B1533 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted */
+    --muted: 42 38% 95%;
+    --muted-foreground: 220 13% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Doré clair */
+    --accent: 47 100% 88%;  /* #FFF3C2 */
+    --accent-foreground: 220 69% 6%;
 
+    /* Destructive */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Bordures et inputs */
+    --border: 47 100% 88%;  /* #FFF3C2 */
+    --input: 47 100% 88%;
+    --ring: 43 57% 61%;
 
-    --radius: 0.5rem;
+    /* Radius plus élégant */
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Couleurs de Noël pour accents */
+    --christmas-green: 140 55% 35%;
+    --christmas-red: 0 70% 50%;
+    --christmas-white: 0 0% 100%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Sidebar */
+    --sidebar-background: 42 38% 95%;
+    --sidebar-foreground: 220 69% 6%;
+    --sidebar-primary: 43 57% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 47 100% 88%;
+    --sidebar-accent-foreground: 220 69% 6%;
+    --sidebar-border: 47 100% 88%;
+    --sidebar-ring: 43 57% 61%;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Transitions douces */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 69% 6%;
+    --foreground: 42 38% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 50% 10%;
+    --card-foreground: 42 38% 95%;
+    --card-border: 43 57% 61%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 50% 10%;
+    --popover-foreground: 42 38% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 43 57% 61%;
+    --primary-foreground: 220 69% 6%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 346 70% 29%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 50% 15%;
+    --muted-foreground: 42 38% 75%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 47 100% 88%;
+    --accent-foreground: 220 69% 6%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 42 38% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 43 57% 61%;
+    --input: 220 50% 15%;
+    --ring: 43 57% 61%;
+    
+    --sidebar-background: 220 69% 6%;
+    --sidebar-foreground: 42 38% 95%;
+    --sidebar-primary: 43 57% 61%;
+    --sidebar-primary-foreground: 220 69% 6%;
+    --sidebar-accent: 220 50% 15%;
+    --sidebar-accent-foreground: 42 38% 95%;
+    --sidebar-border: 43 57% 61%;
+    --sidebar-ring: 43 57% 61%;
   }
 }
 
@@ -101,5 +116,42 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Lato', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .card-bordered {
+    @apply border-2 border-card-border;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .shadow-elegant {
+    box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant;
+  }
+
+  .btn-christmas {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-christmas::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 translate-x-[-100%] transition-all duration-500;
+  }
+
+  .btn-christmas:hover::before {
+    @apply opacity-20 translate-x-[100%];
   }
 }
