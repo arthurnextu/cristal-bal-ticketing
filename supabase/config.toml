@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.check-in]
 verify_jwt = false
+
+[functions.admin-verify]
+verify_jwt = false
