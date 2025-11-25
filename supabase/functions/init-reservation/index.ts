@@ -31,7 +31,9 @@ serve(async (req) => {
       );
     }
 
-    // Vérifier la période de billetterie
+    // Vérifier la période de billetterie (désactivé pour les tests)
+    // IMPORTANT : Réactiver ces vérifications avant la mise en production
+    /*
     const now = new Date();
     const ouverture = new Date("2025-11-28T00:00:00");
     const fermeture = new Date("2025-12-12T23:59:59");
@@ -49,6 +51,9 @@ serve(async (req) => {
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+    */
+
+    console.log("[INIT-RESERVATION] Date verification disabled for testing");
 
     // Vérifier la capacité
     const { data: reservations, error: countError } = await supabase
