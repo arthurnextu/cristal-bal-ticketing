@@ -1,1 +1,16 @@
 project_id = "hxrcdiewehhlubhnnpvy"
+
+[functions.init-reservation]
+verify_jwt = false
+
+[functions.create-payment-session]
+verify_jwt = false
+
+[functions.confirm-payment]
+verify_jwt = false
+
+[functions.send-confirmation-email]
+verify_jwt = false
+
+[functions.check-in]
+verify_jwt = false
