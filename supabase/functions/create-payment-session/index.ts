@@ -87,8 +87,9 @@ serve(async (req) => {
     );
   } catch (error) {
     console.error("[CREATE-PAYMENT] Error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Erreur lors de la création de la session de paiement.";
     return new Response(
-      JSON.stringify({ error: error.message || "Erreur lors de la création de la session de paiement." }),
+      JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }

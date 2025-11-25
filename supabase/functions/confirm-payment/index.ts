@@ -70,8 +70,9 @@ serve(async (req) => {
     );
   } catch (error) {
     console.error("[CONFIRM-PAYMENT] Error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Erreur lors de la confirmation du paiement.";
     return new Response(
-      JSON.stringify({ error: error.message || "Erreur lors de la confirmation du paiement." }),
+      JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
