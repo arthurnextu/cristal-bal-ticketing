@@ -10,6 +10,8 @@ import Billetterie from "./pages/Billetterie";
 import Paiement from "./pages/Paiement";
 import PaiementSuccess from "./pages/PaiementSuccess";
 import PaiementCancel from "./pages/PaiementCancel";
+import Admin from "./pages/Admin";
+import Scan from "./pages/Scan";
 import CGV from "./pages/CGV";
 import PolitiqueRemboursement from "./pages/PolitiqueRemboursement";
 import MentionsLegales from "./pages/MentionsLegales";
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/paiement/:reservationId" element={<Paiement />} />
           <Route path="/paiement/success" element={<PaiementSuccess />} />
           <Route path="/paiement/cancel" element={<PaiementCancel />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/scan" element={<Scan />} />
           <Route path="/infos-pratiques" element={<InfosPratiques />} />
           <Route path="/cgv" element={<CGV />} />
           <Route path="/politique-remboursement" element={<PolitiqueRemboursement />} />
