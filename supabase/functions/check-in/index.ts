@@ -98,8 +98,9 @@ serve(async (req) => {
     );
   } catch (error) {
     console.error("[CHECK-IN] Error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Erreur serveur interne.";
     return new Response(
-      JSON.stringify({ error: error.message || "Erreur serveur interne." }),
+      JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }

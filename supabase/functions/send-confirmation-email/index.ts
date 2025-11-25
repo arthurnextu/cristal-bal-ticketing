@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@2.0.0";
+import { Resend } from "https://esm.sh/resend@2.0.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
 import QRCode from "https://esm.sh/qrcode@1.5.3";
 
@@ -161,8 +161,9 @@ serve(async (req) => {
     });
   } catch (error: any) {
     console.error("[SEND-EMAIL] Error:", error);
+    const errorMessage = error?.message || "Erreur lors de l'envoi de l'email.";
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: errorMessage }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
