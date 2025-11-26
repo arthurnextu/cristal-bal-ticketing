@@ -30,8 +30,10 @@ serve(async (req) => {
 
     // Récupérer la session Stripe pour vérifier le paiement
     const session = await stripe.checkout.sessions.retrieve(sessionId);
+    console.log("[CONFIRM-PAYMENT] Stripe session retrieved, payment_status:", session.payment_status);
 
     if (session.payment_status !== "paid") {
+      console.error("[CONFIRM-PAYMENT] Payment not confirmed:", session.payment_status);
       return new Response(
         JSON.stringify({ error: "Le paiement n'a pas été confirmé." }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -39,10 +41,13 @@ serve(async (req) => {
     }
 
     // Mettre à jour la réservation
-    const { error: updateError } = await supabase
+    console.log("[CONFIRM-PAYMENT] Updating reservation status to 'confirmed'...");
+    const { data: reservation, error: updateError } = await supabase
       .from("reservations")
       .update({ status: "confirmed" })
-      .eq("id", reservationId);
+      .eq("id", reservationId)
+      .select()
+      .single();
 
     if (updateError) {
       console.error("[CONFIRM-PAYMENT] Error updating reservation:", updateError);
@@ -52,17 +57,27 @@ serve(async (req) => {
       );
     }
 
+    console.log("[CONFIRM-PAYMENT] ✅ Reservation confirmed:", {
+      id: reservation.id,
+      email: reservation.email,
+      ticket_code: reservation.ticket_code,
+      nombre_billets: reservation.nombre_billets
+    });
+
     // Appeler la fonction d'envoi d'email
-    const { error: emailError } = await supabase.functions.invoke("send-confirmation-email", {
+    console.log("[CONFIRM-PAYMENT] Calling send-confirmation-email function...");
+    const { data: emailData, error: emailError } = await supabase.functions.invoke("send-confirmation-email", {
       body: { reservationId },
     });
 
     if (emailError) {
-      console.error("[CONFIRM-PAYMENT] Error sending email:", emailError);
+      console.error("[CONFIRM-PAYMENT] ❌ Error sending email:", emailError);
       // On ne retourne pas d'erreur car la réservation est confirmée
+    } else {
+      console.log("[CONFIRM-PAYMENT] ✅ Email function called successfully:", emailData);
     }
 
-    console.log("[CONFIRM-PAYMENT] Payment confirmed successfully");
+    console.log("[CONFIRM-PAYMENT] ✅ Payment confirmed successfully");
 
     return new Response(
       JSON.stringify({ success: true }),
