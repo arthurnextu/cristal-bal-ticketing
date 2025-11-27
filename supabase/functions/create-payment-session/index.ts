@@ -64,7 +64,7 @@ serve(async (req) => {
               name: "Le Bal de cristal - Billet(s)",
               description: `${reservation.nombre_billets} billet(s) pour Le Bal de cristal - 19 décembre 2025`,
             },
-            unit_amount: 2000, // 40€
+            unit_amount: 4000, // 40€
           },
           quantity: reservation.nombre_billets,
         },
