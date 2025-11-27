@@ -43,7 +43,7 @@ serve(async (req) => {
     }
 
     // Générer le QR code
-    const qrCodeUrl = `https://bal-de-cristal.lovable.app/check/${reservation.ticket_code}`;
+    const qrCodeUrl = `https://bal-de-cristal.vercel.app/${reservation.ticket_code}`;
     const qrCodeDataUrl = await QRCode.toDataURL(qrCodeUrl, { width: 300 });
 
     // Préparer le contenu de l'email

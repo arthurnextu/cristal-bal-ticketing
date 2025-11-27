@@ -28,17 +28,16 @@ const Billetterie = () => {
     nombreBillets: 1,
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      // Validation
+      // 1) Validation avec Zod
       const validated = reservationSchema.parse(formData);
-
       console.log("Submitting reservation:", validated);
 
-      // Appeler l'edge function pour initialiser la réservation
+      // 2) Appel de l'edge function Supabase
       const { data, error } = await supabase.functions.invoke("init-reservation", {
         body: validated,
       });
@@ -48,19 +47,26 @@ const Billetterie = () => {
         throw new Error(error.message || "Erreur lors de la réservation");
       }
 
+      if (!data) {
+        throw new Error("Réponse invalide du serveur (aucune donnée).");
+      }
+
       if (data.error) {
         toast({
           variant: "destructive",
           title: "Erreur",
           description: data.error,
         });
-        setIsLoading(false);
         return;
+      }
+
+      if (!data.reservationId) {
+        throw new Error("Réponse invalide du serveur (pas de reservationId).");
       }
 
       console.log("Reservation created:", data);
 
-      // Rediriger vers la page de paiement
+      // 3) Redirection vers la page de paiement
       navigate(`/paiement/${data.reservationId}`);
     } catch (error) {
       console.error("Error submitting reservation:", error);
@@ -75,14 +81,18 @@ const Billetterie = () => {
         toast({
           variant: "destructive",
           title: "Erreur",
-          description: error instanceof Error ? error.message : "Une erreur est survenue",
+          description:
+            error instanceof Error ? error.message : "Une erreur est survenue",
         });
       }
+    } finally {
+      // Toujours réactiver le bouton
       setIsLoading(false);
     }
   };
 
-  const prixTotal = formData.nombreBillets * 20;
+
+  const prixTotal = formData.nombreBillets * 40;
 
   return (
     <Layout>
@@ -245,7 +255,7 @@ const Billetterie = () => {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Prix unitaire</span>
-                      <span className="font-semibold">20€</span>
+                      <span className="font-semibold">40€</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Nombre de billets</span>
@@ -274,7 +284,7 @@ const Billetterie = () => {
                       <p>
                         <strong className="text-foreground">Places limitées</strong>
                         <br />
-                        Seulement 100 billets disponibles
+                        Seulement 200 billets disponibles
                       </p>
                     </div>
                   </div>

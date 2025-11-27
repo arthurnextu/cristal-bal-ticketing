@@ -118,7 +118,7 @@ const Paiement = () => {
     );
   }
 
-  const montantTotal = reservation.nombre_billets * 20;
+  const montantTotal = reservation.nombre_billets * 40;
 
   return (
     <Layout>
@@ -199,7 +199,7 @@ const Paiement = () => {
                   <div className="space-y-3">
                     <div className="flex justify-between text-lg">
                       <span className="text-muted-foreground">Prix unitaire</span>
-                      <span className="font-semibold">20€</span>
+                      <span className="font-semibold">40€</span>
                     </div>
                     <div className="flex justify-between text-lg">
                       <span className="text-muted-foreground">Nombre de billets</span>

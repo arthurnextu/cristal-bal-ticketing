@@ -51,7 +51,7 @@ serve(async (req) => {
       );
     }
 
-    const montantTotal = reservation.nombre_billets * 20 * 100; // En centimes
+    const montantTotal = reservation.nombre_billets * 40 * 100; // En centimes
 
     // Créer la session Stripe
     const session = await stripe.checkout.sessions.create({
@@ -64,7 +64,7 @@ serve(async (req) => {
               name: "Le Bal de cristal - Billet(s)",
               description: `${reservation.nombre_billets} billet(s) pour Le Bal de cristal - 19 décembre 2025`,
             },
-            unit_amount: 2000, // 20€
+            unit_amount: 2000, // 40€
           },
           quantity: reservation.nombre_billets,
         },

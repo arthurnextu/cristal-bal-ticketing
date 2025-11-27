@@ -35,7 +35,7 @@ const CGV = () => {
               <section>
                 <h2 className="text-2xl font-semibold text-primary mb-4">3. Prix</h2>
                 <p className="text-muted-foreground">
-                  Le prix du billet est fixé à 20€ par personne. Ce tarif inclut l'accès à l'événement, 
+                  Le prix du billet est fixé à 40€ par personne. Ce tarif inclut l'accès à l'événement, 
                   le cocktail de bienvenue, le buffet gastronomique et l'ensemble des animations proposées 
                   durant la soirée.
                 </p>

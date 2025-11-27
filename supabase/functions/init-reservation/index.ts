@@ -69,8 +69,11 @@ serve(async (req) => {
       );
     }
 
-    const totalReserved = reservations.reduce((sum, r) => sum + r.nombre_billets, 0);
-    const placesRestantes = 100 - totalReserved;
+    const totalReserved = (reservations ?? []).reduce(
+  (sum, r) => sum + r.nombre_billets,
+  0
+);
+    const placesRestantes = 200 - totalReserved;
 
     console.log("[INIT-RESERVATION] Places restantes:", placesRestantes);
 
@@ -115,7 +118,7 @@ serve(async (req) => {
       JSON.stringify({
         reservationId: reservation.id,
         ticketCode: reservation.ticket_code,
-        montantTotal: nombreBillets * 20,
+        montantTotal: nombreBillets * 40,
       }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );

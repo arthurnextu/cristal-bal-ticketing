@@ -102,7 +102,7 @@ const InfosPratiques = () => {
                       <li>• Buffet gastronomique inclus</li>
                       <li>• Photobooth gratuit toute la soirée</li>
                       <li>• Tombola avec cadeaux à gagner</li>
-                      <li>• Prix : 20€ par billet</li>
+                      <li>• Prix : 40€ par billet</li>
                       <li>• Capacité limitée à 100 places</li>
                     </ul>
                   </div>

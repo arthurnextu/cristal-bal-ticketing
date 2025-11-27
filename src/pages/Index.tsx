@@ -7,49 +7,57 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-background via-accent/20 to-background py-20 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="space-y-4 animate-fade-in">
-              <h1 className="text-5xl md:text-7xl font-bold text-primary tracking-tight">
-                Le Bal de cristal
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground">
-                Le bal de Noël incontournable de Bordeaux
-              </p>
-            </div>
+<section className="relative py-20 md:py-32 overflow-hidden">
+  {/* Image de fond */}
+  <div
+    className="absolute inset-0 -z-10 bg-cover bg-center"
+    style={{ backgroundImage: "url('/images/hero-bal.png')" }}
+  />
+  {/* Overlay pour assombrir un peu l'image */}
+  <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 via-black/20 to-background" />
 
-            <div className="flex flex-wrap justify-center gap-6 text-foreground animate-fade-in">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-primary" />
-                <span className="font-medium">19 décembre 2025</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5 text-primary" />
-                <span className="font-medium">19h00 - 01h00</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-primary" />
-                <span className="font-medium">Maison Cantonale, La Bastide</span>
-              </div>
-            </div>
+  <div className="container mx-auto px-4">
+    <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="space-y-4 animate-fade-in">
+        <h1 className="text-5xl md:text-7xl font-bold text-primary tracking-tight">
+          Le Bal de cristal
+        </h1>
+        <p className="text-xl md:text-2xl text-muted-foreground">
+          Le bal de Noël incontournable de Bordeaux
+        </p>
+      </div>
 
-            <div className="space-y-4 animate-scale-in">
-              <Link to="/billetterie">
-                <Button 
-                  size="lg" 
-                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-lg px-8 py-6 shadow-elegant hover-lift btn-christmas"
-                >
-                  Réserver mon billet - 20€
-                </Button>
-              </Link>
-              <p className="text-sm text-muted-foreground">
-                Places limitées : 100 billets maximum
-              </p>
-            </div>
-          </div>
+      <div className="flex flex-wrap justify-center gap-6 text-foreground animate-fade-in">
+        <div className="flex items-center gap-2">
+          <Calendar className="h-5 w-5 text-primary" />
+          <span className="font-medium">19 décembre 2025</span>
         </div>
-      </section>
+        <div className="flex items-center gap-2">
+          <Clock className="h-5 w-5 text-primary" />
+          <span className="font-medium">19h00 - 01h00</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <MapPin className="h-5 w-5 text-primary" />
+          <span className="font-medium">Maison Cantonale, La Bastide</span>
+        </div>
+      </div>
+
+      <div className="space-y-4 animate-scale-in">
+        <Link to="/billetterie">
+          <Button 
+            size="lg" 
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-lg px-8 py-6 shadow-elegant hover-lift btn-christmas"
+          >
+            Réserver mon billet - 40€
+          </Button>
+        </Link>
+        <p className="text-sm text-muted-foreground">
+          Places limitées : 200 billets maximum
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Info Cards Section */}
       <section className="py-16 bg-card">
@@ -61,7 +69,7 @@ const Index = () => {
               </div>
               <h3 className="font-semibold text-lg mb-2">Capacité limitée</h3>
               <p className="text-muted-foreground">
-                Seulement 100 places disponibles pour garantir une soirée intime et élégante
+                Seulement 200 places disponibles pour garantir une soirée intime et élégante
               </p>
             </div>
 
