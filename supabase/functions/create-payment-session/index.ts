@@ -52,6 +52,7 @@ serve(async (req) => {
     }
 
     const montantTotal = reservation.nombre_billets * 40 * 100; // En centimes
+    console.log("[CREATE-PAYMENT] PRIX UTILISÉ (centimes):", 4000);
 
     // Créer la session Stripe
     const session = await stripe.checkout.sessions.create({
