@@ -17,6 +17,7 @@ serve(async (req) => {
 
   try {
     console.log("[SEND-EMAIL] Function started");
+    console.log("[SEND-EMAIL] RESEND_API_KEY present:", !!Deno.env.get("RESEND_API_KEY"));
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL") ?? "",
@@ -43,8 +44,14 @@ serve(async (req) => {
     }
 
     // Générer le QR code
+<<<<<<< HEAD
     const qrCodeUrl = `https://bal-de-cristal.vercel.app/${reservation.ticket_code}`;
+=======
+    console.log("[SEND-EMAIL] Generating QR code for ticket:", reservation.ticket_code);
+    const qrCodeUrl = `https://bal-de-cristal.lovable.app/check/${reservation.ticket_code}`;
+>>>>>>> 68d8931a4daa294f738a86dd03ebe7d6f7f5e311
     const qrCodeDataUrl = await QRCode.toDataURL(qrCodeUrl, { width: 300 });
+    console.log("[SEND-EMAIL] QR code generated successfully");
 
     // Préparer le contenu de l'email
     const emailHtml = `
@@ -143,6 +150,10 @@ serve(async (req) => {
       </html>
     `;
 
+    console.log("[SEND-EMAIL] Sending email to:", reservation.email);
+    console.log("[SEND-EMAIL] Ticket code:", reservation.ticket_code);
+    console.log("[SEND-EMAIL] Number of tickets:", reservation.nombre_billets);
+    
     const emailResponse = await resend.emails.send({
       from: "Le Bal de cristal <onboarding@resend.dev>",
       to: [reservation.email],
@@ -150,7 +161,8 @@ serve(async (req) => {
       html: emailHtml,
     });
 
-    console.log("[SEND-EMAIL] Email sent successfully:", emailResponse);
+    console.log("[SEND-EMAIL] ✅ Email sent successfully!");
+    console.log("[SEND-EMAIL] Resend response:", JSON.stringify(emailResponse));
 
     return new Response(JSON.stringify(emailResponse), {
       status: 200,
